@@ -1,0 +1,15 @@
+.elements__heart {
+  cursor: pointer;
+  background-color: rgba(0,0,0,0);
+  border: none;
+}
+.elements__heart:hover {
+  opacity: 0.5;
+  transition: 0.45s;
+}
+.elements__heart:active {
+  background-image: url(../../../images/black-heart.svg);
+  background-repeat: no-repeat;
+  opacity: 1;
+  padding-left: initial;
+}
