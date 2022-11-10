@@ -1,0 +1,5 @@
+.new-card__element {
+  position: relative;
+  border-radius: 10px;
+  background-color: #ffffff;
+}

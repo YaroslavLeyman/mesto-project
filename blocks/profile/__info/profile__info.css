@@ -1,8 +1,9 @@
 .profile__info {
+  position: relative;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  max-width: 336px;
+  flex-wrap: nowrap;
+  max-width: 450px;
 }
 
 @media screen and (max-width: 650px) {
