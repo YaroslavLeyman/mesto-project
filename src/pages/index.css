@@ -25,9 +25,11 @@
 @import url(../blocks/popup/__main-container/popup__main-container.css);
 @import url(../blocks/popup/__heading/popup__heading.css);
 @import url(../blocks/popup/__input-container/popup__input-container.css);
-@import url(../blocks/popup/__item/popup__item.css);
 @import url(../blocks/popup/__button/popup__button.css);
 @import url(../blocks/popup/__close/popup__close.css);
+@import url(../blocks/popup/__input-error/popup__input-error.css);
+@import url(../blocks/popup/__input-error/_active/popup__input-error_active.css);
+@import url(../blocks/popup/__text-input/_type.css);
 @import url(../blocks/popup-add/popup-add.css);
 @import url(../blocks/popup-add/__button/popup-add__button.css);
 @import url(../blocks/popup-add/__close/popup-add__close.css);
@@ -43,5 +45,6 @@
 @import url(../blocks/popup-card/__main-container/popup-card__main-container.css);
 @import url(../blocks/popup-card/__image/popup-card__image.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
-@import url(../blocks/popup-add/_opened/popup-add_opened.css);
 @import url(../blocks/popup-card/_opened/popup-card_opened.css);
+@import url(../blocks/popup/__confirm-button/popup__confirm-button.css);
+@import url(../blocks/popup/__confirm-button/_disabled/popup__confirm-button_disabled.css);

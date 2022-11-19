@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Место</title>
+</head>
+<body class="page">
+
+  <div class="popup popup_profile" id="popup-profile">
+    <div class="popup__container">
+      <button type="button" class="popup__close">
+        <img src="<%=require('./images/close-icon.svg')%>" alt="Закрыть" class="popup__close-icon">
+      </button>
+      <form name="profile" class="popup__main-container">
+        <h2 class="popup__heading">Редактировать профиль</h2>
+        <fieldset class="popup__input-container">
+          <input type="text" class="popup__text-input" placeholder="Имя" id="heading" name="heading" required minlength="2" maxlength="40">
+          <span class="popup__input-error heading-error"></span>
+          <input type="text" class="popup__text-input" placeholder="Профессиональная деятельность" id="subheading" name="subheading" required minlength="2" maxlength="200">
+          <span class="popup__input-error subheading-error"></span>
+        </fieldset>
+        <button type="submit" class="popup__confirm-button" disabled>Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup_add" id="popup-add">
+    <div class="popup__container">
+      <button type="button" class="popup__close">
+        <img src="<%=require('./images/close-icon.svg')%>" alt="Закрыть" class="popup__close-icon">
+      </button>
+      <form name="profile" class="popup__main-container" id="place-form">
+        <h2 class="popup__heading">Новое место</h2>
+        <fieldset class="popup-add__input-container">
+          <input type="text" class="popup__text-input" placeholder="Название" id="popup-add-name" name="heading" value="" minlength="2" maxlength="30" required>
+          <span class="popup__input-error popup-add-name-error"></span>
+          <input type="url" class="popup__text-input" placeholder="Ссылка на картинку" id="popup-add-link" name="subheading" value="" required>
+          <span class="popup__input-error popup-add-link-error"></span>
+        </fieldset>
+        <button type="submit" class="popup__confirm-button" disabled>Создать</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup-card" id="popup-image">
+    <div class="popup-card__container">
+      <button type="button" class="popup__close">
+        <img src="<%=require('./images/close-icon.svg')%>" alt="Закрыть" class="popup__close-icon">
+      </button>
+      <form name="profile" class="popup-card__main-container">
+        <img src="" alt="" class="popup-card__image">
+      </form>
+      <p class="popup-card__description"></p>
+    </div>
+  </div>
+
+  <header class="header">
+    <img src="<%=require('./images/header-logo.svg')%>" alt="Логотип" class="logo">
+  </header>
+
+  <main class="content">
+    <section class="profile">
+      <img src="<%=require('./images/Avatar.jpg')%>" alt="Аватар" class="profile__avatar">
+      <div class="profile__info">
+        <h1 class="profile__title">Жак-Ив Кусто</h1>
+        <button type="button" class="profile__button-edit">
+          <img src="<%=require('./images/button-edit.svg')%>" alt="Редактировать">
+        </button>
+        <p class="profile__description">Исследователь океана</p>
+      </div>
+
+      <button type="button" class="profile__button-add">
+        <img src="<%=require('./images/Add.svg')%>" alt="Добавить">
+      </button>
+    </section>
+
+    <section class="elements"></section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+  </footer>
+
+  <template id="elements-template">
+    <div class="new-card">
+      <div class="new-card__element">
+        <img src="" alt="" class="new-card__image">
+        <div class="new-card__footer">
+          <h2 class="new-card__title"></h2>
+          <button type="button" class="new-card__heart"><img src="<%=require('./images/heart.svg')%>" alt="лайк"></button>
+        </div>
+        <button type="button"  class="new-card__delete"><img src="<%=require('./images/delete.svg')%>" alt="удалить"></button>
+      </div>
+    </div>
+  </template>
+
+
+</body>
+</html>
