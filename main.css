@@ -48,4 +48,6 @@
 .popup-card_opened{display:flex;opacity:1;visibility:visible}
 .popup__confirm-button{background-color:#000;border:none;border-radius:2px;color:#fff;cursor:pointer;font-size:18px;font-style:normal;font-weight:400;height:50px;line-height:22px;width:100%}.popup__confirm-button:hover{opacity:.8;transition:.45s}@media screen and (max-width:470px){.popup__confirm-button{font-size:14px;line-height:17px}}
 .popup__confirm-button_disabled{background-color:#fff;color:#000;opacity:.2;outline:1px solid #000}
+.profile__avatar-cover{position:relative}.profile__avatar-cover:hover:after{background-size:cover;background:url(a086f758840ae814ecde.svg) no-repeat 50%,linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.8));content:"";cursor:pointer;display:block;height:120px;left:0;position:absolute;top:0;width:120px}
+.popup-card_opened{display:flex;opacity:1;visibility:visible}
 
