@@ -10,9 +10,9 @@
   <div class="popup popup_profile" id="popup-profile">
     <div class="popup__container">
       <button type="button" class="popup__close">
-        <img src="<%=require('./images/close-icon.svg')%>" alt="Закрыть" class="popup__close-icon">
+        <img src="<%=require('./images/close-icon.svg')%>" alt="Закрыть">
       </button>
-      <form name="profile" class="popup__main-container">
+      <form name="profile" class="popup__main-container" method="post" autocomplete="off">
         <h2 class="popup__heading">Редактировать профиль</h2>
         <fieldset class="popup__input-container">
           <input type="text" class="popup__text-input" placeholder="Имя" id="heading" name="heading" required minlength="2" maxlength="40">
@@ -28,9 +28,9 @@
   <div class="popup popup_add" id="popup-add">
     <div class="popup__container">
       <button type="button" class="popup__close">
-        <img src="<%=require('./images/close-icon.svg')%>" alt="Закрыть" class="popup__close-icon">
+        <img src="<%=require('./images/close-icon.svg')%>" alt="Закрыть">
       </button>
-      <form name="profile" class="popup__main-container" id="place-form">
+      <form name="profile" class="popup__main-container" id="place-form" method="post" autocomplete="off">
         <h2 class="popup__heading">Новое место</h2>
         <fieldset class="popup-add__input-container">
           <input type="text" class="popup__text-input" placeholder="Название" id="popup-add-name" name="heading" value="" minlength="2" maxlength="30" required>
@@ -46,12 +46,28 @@
   <div class="popup popup-card" id="popup-image">
     <div class="popup-card__container">
       <button type="button" class="popup__close">
-        <img src="<%=require('./images/close-icon.svg')%>" alt="Закрыть" class="popup__close-icon">
+        <img src="<%=require('./images/close-icon.svg')%>" alt="Закрыть">
       </button>
       <form name="profile" class="popup-card__main-container">
         <img src="" alt="" class="popup-card__image">
       </form>
       <p class="popup-card__description"></p>
+    </div>
+  </div>
+
+  <div class="popup popup-avatar" id="popup-avatar">
+    <div class="popup__container">
+      <button type="button" class="popup__close">
+        <img src="<%=require('./images/close-icon.svg')%>" alt="Закрыть">
+      </button>
+      <form name="profile" class="popup__main-container" method="post" autocomplete="off">
+        <h2 class="popup__heading">Обновить аватар</h2>
+        <fieldset class="popup__input-container">
+          <input type="url" class="popup__text-input" placeholder="Ссылка на аватар" id="popup-avatar-link" name="subheading" value="" required>
+          <span class="popup__input-error popup-avatar-link-error"></span>
+        </fieldset>
+        <button type="submit" class="popup__confirm-button" disabled>Сохранить</button>
+      </form>
     </div>
   </div>
 
@@ -61,7 +77,9 @@
 
   <main class="content">
     <section class="profile">
-      <img src="<%=require('./images/Avatar.jpg')%>" alt="Аватар" class="profile__avatar">
+      <div class="profile__avatar-cover">
+        <img src="<%=require('./images/Avatar.jpg')%>" alt="Аватар" class="profile__avatar">
+      </div>
       <div class="profile__info">
         <h1 class="profile__title">Жак-Ив Кусто</h1>
         <button type="button" class="profile__button-edit">
@@ -89,6 +107,7 @@
         <div class="new-card__footer">
           <h2 class="new-card__title"></h2>
           <button type="button" class="new-card__heart"><img src="<%=require('./images/heart.svg')%>" alt="лайк"></button>
+          <p class="new-card__likes-counter"></p>
         </div>
         <button type="button"  class="new-card__delete"><img src="<%=require('./images/delete.svg')%>" alt="удалить"></button>
       </div>

@@ -1,5 +1,5 @@
-import { openModalWindow, closeModalWindow } from "./modal.js"
-import { cardLIst } from "./utils.js"
+import { openModalWindow, closeModalWindow, adjustLike, changeLikeState } from "./utils.js"
+import { cardLIst } from "../index.js"
 
 const popupAddCard = document.querySelector('#popup-add');
 const cardAddForm = document.querySelector('#place-form');
@@ -19,10 +19,6 @@ export function createCard(card) {
   photo.setAttribute('src', card.link);
   photo.setAttribute('alt', card.name);
 
-  elementCard.querySelector('.new-card__heart').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('new-card__heart_active');
-  });
-
   const deleteCard = elementCard.querySelector('.new-card__delete');
   deleteCard.addEventListener('click', function() {
     elementCard.remove();
@@ -31,6 +27,10 @@ export function createCard(card) {
   photo.addEventListener('click', function () {
     openImagePopup(card);
   });
+
+  adjustLike(card, elementCard)
+
+  elementCard.querySelector('.new-card__heart').addEventListener('click', (evt) => changeLikeState(evt, card, elementCard.querySelector('.new-card__likes-counter')))
 
   return elementCard;
 }

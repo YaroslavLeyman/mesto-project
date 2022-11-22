@@ -1,58 +1,63 @@
-import { closeModalWindow } from "./modal.js"
-import { createCard } from "./card.js"
+import { setCloseListener, removeCloseListener } from "./modal.js"
+import { userID } from '../index.js'
+import { addLike, removeLike } from './api.js'
 
-const popupEdit = document.querySelector('.popup');
-const nameInput = document.querySelector('#heading');
-const jobInput = document.querySelector('#subheading');
-const profileName = document.querySelector('.profile__title');
-const profileJob = document.querySelector('.profile__description');
-const profileEditForm = document.querySelector('.popup__main-container');
-const cardLIst = document.querySelector('.elements');
+// Функция открытия попапа
+export function openModalWindow(modalWindow) {
+  modalWindow.classList.add('popup_opened');
+  setCloseListener(modalWindow);
+};
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+//Функция закрытия попапа
+export function closeModalWindow(modalWindow) {
+  modalWindow.classList.remove('popup_opened');
+  removeCloseListener(modalWindow);
+};
+
+let popupBtnText
+function renderLoading(isLoading, modalWindow, renderText = "Сохранение...") {
+  const btnNode = modalWindow.querySelector('.popup__confirm-button')
+  if (isLoading) {
+    popupBtnText = btnNode.textContent
+    btnNode.textContent = renderText
+  } else {
+    setTimeout(() => { btnNode.textContent = popupBtnText }, 1000)
   }
-];
+};
 
-// Функция загрузки карточек на сайт
-function uploadCard(array, cardLIst) {
-  array.forEach((card) => cardLIst.prepend(createCard(card)));
+function adjustLike (card, elementCard) {
+  elementCard.querySelector('.new-card__likes-counter').textContent = card.likes.length
+  if (card.likes.length > 0) {
+    card.likes.forEach( like => {
+      if (like._id === userID) {
+        elementCard.querySelector('.new-card__heart').classList.add('new-card__heart_active')
+      }
+    })
+  }
 }
 
-// Функция сохранения информации в профиле
-function handleProfileFormSubmit (evt) {
-  evt.preventDefault();
+function changeLikeState (evt, data, likesCounter) {
+  if (evt.target.classList.contains('new-card__heart_active')) {
+    removeLike(data._id)
+    .then( (res) => {
+      evt.target.classList.remove('new-card__heart_active')
+      likesCounter.textContent = res.likes.length
+      evt.target.blur()
+    })
+    .catch( err => {
+      console.log(err)
+    })
+  } else {
+    addLike(data._id)
+    .then( (res) => {
+      evt.target.classList.add('new-card__heart_active')
+      likesCounter.textContent = res.likes.length
+      evt.target.blur()
+    })
+    .catch( err => {
+      console.log(err)
+    })
+  }
+};
 
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
-
-  closeModalWindow(popupEdit);
-}
-profileEditForm.addEventListener('submit', handleProfileFormSubmit);
-
-// Вызов фукциий
-uploadCard(initialCards, cardLIst);
-
-export { popupEdit, nameInput, jobInput, profileName, profileJob, cardLIst };
+export { renderLoading, adjustLike, changeLikeState }

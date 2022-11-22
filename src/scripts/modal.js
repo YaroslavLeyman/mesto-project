@@ -1,14 +1,4 @@
-// Функция открытия попапа
-export function openModalWindow(modalWindow) {
-  modalWindow.classList.add('popup_opened');
-  setCloseListener(modalWindow);
-};
-
-//Функция закрытия попапа
-export function closeModalWindow(modalWindow) {
-  modalWindow.classList.remove('popup_opened');
-  removeCloseListener(modalWindow);
-};
+import { closeModalWindow } from "./utils.js"
 
 //Функции закрытия попапов на Esc и оверлей
 function setCloseListener(modalWindow) {
@@ -36,3 +26,5 @@ function removeCloseListener(modalWindow) {
   document.removeEventListener('keydown', closeListenerKeydown);
   modalWindow.removeEventListener('mousedown', closeListenerMousedown);
 };
+
+export { setCloseListener, removeCloseListener }
