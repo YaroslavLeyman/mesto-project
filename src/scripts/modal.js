@@ -12,17 +12,17 @@ export function closeModalWindow(modalWindow) {
 
 //Функции закрытия попапов на Esc и оверлей
 function setCloseListener(modalWindow) {
-  document.addEventListener('keydown', CloseListenerKeydown);
-  modalWindow.addEventListener('mousedown', CloseListenerMousedown);
+  document.addEventListener('keydown', closeListenerKeydown);
+  modalWindow.addEventListener('mousedown', closeListenerMousedown);
 };
 
-function CloseListenerKeydown(evt) {
+function closeListenerKeydown(evt) {
   if (evt.type === 'keydown' && evt.key === 'Escape') {
     closeModalWindow(findOpenedPopup());
   };
 };
 
-function CloseListenerMousedown(evt) {
+function closeListenerMousedown(evt) {
   if (evt.type === 'mousedown' && evt.target.classList.contains('popup')) {
     closeModalWindow(evt.target);
   };
@@ -33,6 +33,6 @@ function findOpenedPopup () {
 };
 
 function removeCloseListener(modalWindow) {
-  document.removeEventListener('keydown', CloseListenerKeydown);
-  modalWindow.removeEventListener('mousedown', CloseListenerMousedown);
+  document.removeEventListener('keydown', closeListenerKeydown);
+  modalWindow.removeEventListener('mousedown', closeListenerMousedown);
 };

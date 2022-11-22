@@ -13,10 +13,11 @@ const imagePopup = popPhoto.querySelector('.popup-card__image');
 // Функция создания новой карточки
 export function createCard(card) {
   const elementCard = cardTemplate.querySelector('.new-card__element').cloneNode(true);
+  const photo = elementCard.querySelector('.new-card__image');
 
   elementCard.querySelector(".new-card__title").textContent = card.name;
-  elementCard.querySelector(".new-card__image").src = card.link;
-  elementCard.querySelector(".new-card__image").alt = card.name;
+  photo.setAttribute('src', card.link);
+  photo.setAttribute('alt', card.name);
 
   elementCard.querySelector('.new-card__heart').addEventListener('click', function (evt) {
     evt.target.classList.toggle('new-card__heart_active');
@@ -27,7 +28,6 @@ export function createCard(card) {
     elementCard.remove();
   });
 
-  const photo = elementCard.querySelector('.new-card__image');
   photo.addEventListener('click', function () {
     openImagePopup(card);
   });

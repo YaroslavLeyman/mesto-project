@@ -8,7 +8,16 @@ export function enableValidation (validationNewData) {
 function setEventListeners (formElement, validationNewData) {
   const inputList = Array.from(formElement.querySelectorAll(validationNewData.inputSelector));
   const buttonElement = formElement.querySelector(validationNewData.submitButtonSelector);
+
   toggleButtonState(inputList, buttonElement, validationNewData);
+
+  formElement.addEventListener('reset', () => {
+    // `setTimeout` нужен для того, чтобы дождаться очищения формы
+    setTimeout(() => {
+      toggleButtonState(inputList, buttonElement, validationNewData);
+    }, 0); // 0 миллисекунд, чтобы после `reset` сработало действие
+  });
+
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
       checkInputValidity(formElement, inputElement, validationNewData);
@@ -48,7 +57,7 @@ function showInputError (formElement, inputElement, errorMessage, validationNewD
   errorElement.classList.add('popup__input-error_active')
 };
 
-export function hideInputError (formElement, inputElement, validationNewData) {
+function hideInputError (formElement, inputElement, validationNewData) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(validationNewData.inputErrorClass)
   errorElement.classList.remove('popup__input-error_active')

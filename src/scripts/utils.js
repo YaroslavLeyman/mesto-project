@@ -36,11 +36,6 @@ const initialCards = [
   }
 ];
 
-// проходим по массиву данных и отрисовываем карточки с помощью createCard()
-initialCards.forEach((element) => {
-  createCard(element);
-});
-
 // Функция загрузки карточек на сайт
 function uploadCard(array, cardLIst) {
   array.forEach((card) => cardLIst.prepend(createCard(card)));

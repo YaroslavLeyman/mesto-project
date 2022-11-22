@@ -1,5 +1,5 @@
 import "./pages/index.css";
-import { enableValidation, hideInputError } from "./scripts/validate.js";
+import { enableValidation } from "./scripts/validate.js";
 import { popupEdit, nameInput, jobInput, profileName, profileJob  } from "./scripts/utils.js";
 import { popupAddCard } from "./scripts/card.js";
 import { openModalWindow, closeModalWindow } from "./scripts/modal.js";
@@ -38,5 +38,4 @@ closePopupButtons.forEach((button) => {
   const popup = button.closest('.popup');
   // устанавливаем обработчик закрытия на крестик
   button.addEventListener('click', () => closeModalWindow(popup));
-  hideInputError(formElement, inputElement, validationNewData);
 });
