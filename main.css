@@ -14,7 +14,7 @@
 .new-card__delete{background-color:transparent;border:none;cursor:pointer;position:absolute;right:20px;top:20px;z-index:0}
 .new-card__element{background-color:#fff;border-radius:10px;position:relative}
 .new-card__footer{align-items:baseline;display:flex;justify-content:space-between;margin-top:-3px;padding:25px 15px 31px 21px}
-.new-card__heart{background-color:transparent;border:none;cursor:pointer}.new-card__heart:hover{opacity:.5;transition:.45s}.new-card__heart:active{background-image:url(fe17a515669479b1e649.svg);background-repeat:no-repeat;opacity:1;padding-left:0}
+.new-card__heart{background-color:transparent;border:none;cursor:pointer;margin-left:auto}.new-card__heart:hover{opacity:.5;transition:.45s}.new-card__heart:active{background-image:url(fe17a515669479b1e649.svg);background-repeat:no-repeat;opacity:1;padding-left:0}
 .new-card__heart_active{background-image:url(fe17a515669479b1e649.svg);background-repeat:no-repeat;opacity:1;padding-left:0}
 .new-card__image{border-radius:10px 10px 0 0;height:282px;width:100%}
 .new-card__title{color:#000;font-size:24px;font-style:normal;font-weight:900;line-height:29px;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -28,7 +28,7 @@
 .popup__button{background-color:#000;border:none;border-radius:2px;color:#fff;cursor:pointer;font-size:18px;font-style:normal;font-weight:400;height:50px;line-height:22px;width:100%}.popup__button:hover{opacity:.8;transition:.45s}@media screen and (max-width:470px){.popup__button{font-size:14px;line-height:17px}}
 .popup__close{background-color:transparent;border:none;cursor:pointer;margin-left:auto}.popup__close:hover{opacity:.6;transition:.45s}@media screen and (max-width:470px){.popup__close{padding:0;width:20px}}
 .popup__input-error{align-self:flex-start;color:red;font-size:12px;line-height:15px;min-height:30px;visibility:hidden}
-.popup__input-error_active{visibility:visible}
+.popup__input-error_active{max-width:350px;visibility:visible}
 .popup__text-input_type_error{border-bottom:1px solid red}
 .popup-add{align-items:center;background-color:rgba(0,0,0,.5);display:flex;justify-content:center;min-height:100%;opacity:0;overflow:hidden;position:fixed;right:0;top:0;transition:visibility .6s,opacity .6s;visibility:hidden;width:100%;z-index:1}
 .popup-add__button{background-color:#000;border:none;border-radius:2px;color:#fff;cursor:pointer;font-size:18px;font-style:normal;font-weight:400;height:50px;line-height:22px;width:100%}.popup-add__button:hover{opacity:.8;transition:.45s}@media screen and (max-width:470px){.popup-add__button{font-size:14px;line-height:17px}}
@@ -51,4 +51,5 @@
 .profile__avatar-cover{position:relative}.profile__avatar-cover:hover:after{background-size:cover;background:url(a086f758840ae814ecde.svg) no-repeat 50%,linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.8));content:"";cursor:pointer;display:block;height:120px;left:0;position:absolute;top:0;width:120px}
 .popup-card_opened{display:flex;opacity:1;visibility:visible}
 .new-card__likes-counter{font-size:13px;line-height:16px;margin:3px 0 0;padding:0;text-align:center}
+.new-card__likes-box{display:flex;flex-direction:column}
 
