@@ -106,8 +106,10 @@
         <img src="" alt="" class="new-card__image">
         <div class="new-card__footer">
           <h2 class="new-card__title"></h2>
-          <button type="button" class="new-card__heart"><img src="<%=require('./images/heart.svg')%>" alt="лайк"></button>
-          <p class="new-card__likes-counter"></p>
+          <div class="new-card__likes-box">
+            <button type="button" class="new-card__heart"><img src="<%=require('./images/heart.svg')%>" alt="лайк"></button>
+            <p class="new-card__likes-counter"></p>
+          </div>
         </div>
         <button type="button"  class="new-card__delete"><img src="<%=require('./images/delete.svg')%>" alt="удалить"></button>
       </div>

@@ -59,4 +59,4 @@ function openImagePopup(el) {
   imagePopup.alt = el.name;
 }
 
-export { popupAddCard };
+export { popupAddCard, photoPlaceInput, photoLinkInput };

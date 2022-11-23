@@ -1,0 +1,4 @@
+.new-card__likes-box {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,8 +1,8 @@
 import "./pages/index.css";
 import { enableValidation } from "./scripts/validate.js";
-import { popupAddCard, createCard } from "./scripts/card.js";
+import { popupAddCard, createCard, photoPlaceInput, photoLinkInput } from "./scripts/card.js";
 import { openModalWindow, closeModalWindow, renderLoading } from "./scripts/utils.js";
-import { getInitialCards, getProfileData, patchProfileData, postNewCard, deleteCard, patchAvatar } from './scripts/api.js'
+import { getInitialCards, getProfileData, patchProfileData, postNewCard, patchAvatar } from './scripts/api.js'
 
 
 const profileOpenButton = document.querySelector('.profile__button-edit');
@@ -50,7 +50,7 @@ Promise.all([getProfileData, getInitialCards])
     profileJob.textContent = userData.about;
 
     cardsData.forEach( card => {
-      cardLIst.append(addCard(card))
+      cardLIst.append(createCard(card))
     });
   })
   .catch( err => {
@@ -132,8 +132,8 @@ popupAddCard.addEventListener('submit', evt => {
   evt.preventDefault()
   renderLoading(true, popupAddCard)
   postNewCard(photoPlaceInput.value, photoLinkInput.value)
-    .then( data => {
-      cardLIst.prepend(addCard(data))
+    .then( card => {
+      cardLIst.prepend(createCard(card))
       closeModalWindow(popupAddCard)
       evt.target.reset()
     })
