@@ -52,4 +52,5 @@
 .popup-card_opened{display:flex;opacity:1;visibility:visible}
 .new-card__likes-counter{font-size:13px;line-height:16px;margin:3px 0 0;padding:0;text-align:center}
 .new-card__likes-box{display:flex;flex-direction:column}
+.new-card__delete_hidden{visibility:hidden}
 
