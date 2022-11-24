@@ -1,7 +1,8 @@
 import "./pages/index.css";
 import { enableValidation } from "./scripts/validate.js";
 import { popupAddCard, createCard, photoPlaceInput, photoLinkInput } from "./scripts/card.js";
-import { openModalWindow, closeModalWindow, renderLoading } from "./scripts/utils.js";
+import { renderLoading } from "./scripts/utils.js";
+import { openModalWindow, closeModalWindow } from "./scripts/modal.js";
 import { getInitialCards, getProfileData, patchProfileData, postNewCard, patchAvatar } from './scripts/api.js'
 
 
@@ -12,18 +13,16 @@ const popupAvatar = document.querySelector('#popup-avatar');
 const profile = document.querySelector('.profile');
 const openPopupAvatar = profile.querySelector('.profile__avatar-cover');
 const pfofileAvatar = profile.querySelector('.profile__avatar');
+const pfofileAvatarLink = document.querySelector('#popup-avatar-link');
 
 const popupEdit = document.querySelector('.popup');
 const nameInput = document.querySelector('#heading');
 const jobInput = document.querySelector('#subheading');
 const profileName = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__description');
-const profileEditForm = document.querySelector('.popup__main-container');
 
 const popupProfileContainer = document.querySelector('#popup-profile');
 
-
-//https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg
 
 
 export const cardLIst = document.querySelector('.elements');
@@ -67,19 +66,6 @@ openPopupAvatar.addEventListener('click',() => {
   openModalWindow(popupAvatar);
 });
 
-
-// Функция сохранения информации в профиле
-function handleProfileFormSubmit (evt) {
-  evt.preventDefault();
-
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
-
-  closeModalWindow(popupEdit);
-}
-profileEditForm.addEventListener('submit', handleProfileFormSubmit);
-
-
 // Обработчик открытия окна редактирования
 profileOpenButton.addEventListener('click',() => {
   openModalWindow(popupEdit);
@@ -98,7 +84,7 @@ closePopupButtons.forEach((button) => {
 popupAvatar.addEventListener('submit', evt => {
   evt.preventDefault()
   renderLoading(true, popupAvatar)
-  patchAvatar(document.querySelector('#popup-avatar-link').value)
+  patchAvatar(pfofileAvatarLink.value)
     .then( data => {
       pfofileAvatar.src = data.avatar
       closeModalWindow(popupAvatar)
@@ -117,7 +103,8 @@ popupProfileContainer.addEventListener('submit', evt => {
   renderLoading(true, popupProfileContainer)
   patchProfileData(nameInput.value, jobInput.value)
     .then( data => {
-      handleProfileFormSubmit(profileName, data.name, profileJob, data.about)
+      profileName.textContent = data.name;
+      profileJob.textContent = data.about;
       closeModalWindow(popupProfileContainer)
     })
     .catch( err => {

@@ -52,3 +52,4 @@
 @import url(../blocks/popup-avatar/_opened/popup-avatar_opened.css);
 @import url(../blocks/new-card/__likes-counter/new-card__likes-counter.css);
 @import url(../blocks/new-card/__likes-box/new-card__likes-box.css);
+@import url(../blocks/new-card/__delete/_hidden/new-card__delete_hidden.css);

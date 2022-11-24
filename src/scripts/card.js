@@ -1,8 +1,8 @@
-import { openModalWindow, closeModalWindow, adjustLike, changeLikeState } from "./utils.js"
-import { cardLIst } from "../index.js"
+import { openModalWindow } from "./modal.js"
+import { userID } from "../index.js"
+import { addLike, removeLike, deleteCard } from './api.js'
 
 const popupAddCard = document.querySelector('#popup-add');
-const cardAddForm = document.querySelector('#place-form');
 const cardTemplate = document.querySelector('#elements-template').content;
 const photoPlaceInput = document.querySelector('#popup-add-name');
 const photoLinkInput = document.querySelector('#popup-add-link');
@@ -19,14 +19,21 @@ export function createCard(card) {
   photo.setAttribute('src', card.link);
   photo.setAttribute('alt', card.name);
 
-  const deleteCard = elementCard.querySelector('.new-card__delete');
-  deleteCard.addEventListener('click', function() {
-    elementCard.remove();
+  const cardDelete = elementCard.querySelector('.new-card__delete');
+  cardDelete.addEventListener('click', function() {
+    deleteCard(card._id).then( () => {
+      elementCard.remove();
+    })
   });
 
   photo.addEventListener('click', function () {
     openImagePopup(card);
   });
+
+  //Условие появления корзины удаления, если карточку создал пользователь
+  if (card.owner._id === userID) {
+    cardDelete.classList.remove('new-card__delete_hidden');
+  }
 
   adjustLike(card, elementCard)
 
@@ -34,20 +41,6 @@ export function createCard(card) {
 
   return elementCard;
 }
-
-// Функция добавления карточки
-function handlerAddNewCard (evt) {
-  evt.preventDefault();
-
-  cardLIst.prepend(createCard({
-    name: photoPlaceInput.value,
-    link: photoLinkInput.value
-  }));
-
-  cardAddForm.reset();
-  closeModalWindow(popupAddCard);
-}
-cardAddForm.addEventListener('submit', handlerAddNewCard);
 
 // Функция зума карточки
 function openImagePopup(el) {
@@ -58,5 +51,40 @@ function openImagePopup(el) {
   imagePopup.src = el.link;
   imagePopup.alt = el.name;
 }
+
+function adjustLike (card, elementCard) {
+  elementCard.querySelector('.new-card__likes-counter').textContent = card.likes.length
+  if (card.likes.length > 0) {
+    card.likes.forEach( like => {
+      if (like._id === userID) {
+        elementCard.querySelector('.new-card__heart').classList.add('new-card__heart_active')
+      }
+    })
+  }
+}
+
+function changeLikeState (evt, data, likesCounter) {
+  if (evt.target.classList.contains('new-card__heart_active')) {
+    removeLike(data._id)
+    .then( (res) => {
+      evt.target.classList.remove('new-card__heart_active')
+      likesCounter.textContent = res.likes.length
+      evt.target.blur()
+    })
+    .catch( err => {
+      console.log(err)
+    })
+  } else {
+    addLike(data._id)
+    .then( (res) => {
+      evt.target.classList.add('new-card__heart_active')
+      likesCounter.textContent = res.likes.length
+      evt.target.blur()
+    })
+    .catch( err => {
+      console.log(err)
+    })
+  }
+};
 
 export { popupAddCard, photoPlaceInput, photoLinkInput };
