@@ -4,7 +4,6 @@
   "description": "projects on js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
     "dev": "webpack serve",
     "predeploy": "npm run build",
@@ -14,12 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/YaroslavLeyman/mesto-project-bootcamp.git"
   },
-  "keywords": [
-    "js",
-    "javascript",
-    "webpack"
-  ],
-  "author": "Yaroslav <yaroslavleiman@yandex.ru>",
+  "author": "Yaroslav Leiman",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/YaroslavLeyman/mesto-project-bootcamp/issues"
