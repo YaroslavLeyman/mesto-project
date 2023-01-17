@@ -17,4 +17,4 @@
 
 **GitHub Pages**
 
-* [Ссылка на проект](https://yaroslavleyman.github.io/mesto-project-bootcamp/)
+* [Ссылка на проект](https://yaroslavleyman.github.io/mesto-project/)
