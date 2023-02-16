@@ -1,5 +1,5 @@
 {
-  "name": "mesto-project-bootcamp",
+  "name": "mesto-project",
   "version": "1.0.0",
   "description": "projects on js",
   "main": "index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YaroslavLeyman/mesto-project-bootcamp.git"
+    "url": "git+https://github.com/YaroslavLeyman/mesto-project.git"
   },
   "author": "Yaroslav Leiman",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/YaroslavLeyman/mesto-project-bootcamp/issues"
+    "url": "https://github.com/YaroslavLeyman/mesto-project/issues"
   },
-  "homepage": "https://github.com/YaroslavLeyman/mesto-project-bootcamp#readme",
+  "homepage": "https://github.com/YaroslavLeyman/mesto-project",
   "devDependencies": {
     "@babel/core": "^7.20.2",
     "@babel/preset-env": "^7.20.2",
